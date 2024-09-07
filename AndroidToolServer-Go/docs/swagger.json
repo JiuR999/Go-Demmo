@@ -1,0 +1,136 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server celler server.",
+        "title": "My GoDemoAPP API Doc",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/dream/list": {
+            "get": {
+                "description": "根据条件解梦",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "周公解梦"
+                ],
+                "summary": "根据条件解梦",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "梦的大分类",
+                        "name": "biglx",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "梦的细分类",
+                        "name": "smalllx",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "梦的主题",
+                        "name": "title",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/failure/list": {
+            "get": {
+                "description": "查询所有通用故障",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Asset-GeneralFailure"
+                ],
+                "summary": "查询所有通用故障",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/failure/page": {
+            "get": {
+                "description": "分页查询通用故障",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Asset-GeneralFailure"
+                ],
+                "summary": "分页查询通用故障",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "分页大小",
+                        "name": "pageSize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/failure/{id}": {
+            "get": {
+                "description": "根据ID查询故障",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Asset-GeneralFailure"
+                ],
+                "summary": "根据ID查询故障",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "故障ID",
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    }
+}

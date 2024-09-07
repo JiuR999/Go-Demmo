@@ -1,0 +1,89 @@
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: My GoDemoAPP API Doc
+  version: "1.0"
+paths:
+  /dream/list:
+    get:
+      description: 根据条件解梦
+      parameters:
+      - description: 梦的大分类
+        in: query
+        name: biglx
+        type: string
+      - description: 梦的细分类
+        in: query
+        name: smalllx
+        type: string
+      - description: 梦的主题
+        in: query
+        name: title
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: 根据条件解梦
+      tags:
+      - 周公解梦
+  /failure/{id}:
+    get:
+      description: 根据ID查询故障
+      parameters:
+      - description: 故障ID
+        in: path
+        name: id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: 根据ID查询故障
+      tags:
+      - Asset-GeneralFailure
+  /failure/list:
+    get:
+      description: 查询所有通用故障
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: 查询所有通用故障
+      tags:
+      - Asset-GeneralFailure
+  /failure/page:
+    get:
+      description: 分页查询通用故障
+      parameters:
+      - description: 分页大小
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: 分页查询通用故障
+      tags:
+      - Asset-GeneralFailure
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
